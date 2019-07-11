@@ -1,19 +1,45 @@
 import { START_BOARD } from './types.js';
 
 const configureCounts = (board, startRow, startCol) => {
-  const addCount = row => {
-    if (row === startRow + 3) {
+  let startingCol = 0;
+  let endingCol = 0;
+  if (startCol === 0) {
+    startingCol = startCol;
+    endingCol = startCol + 1;
+  } else if (startCol === 9) {
+    startingCol = startCol - 1;
+    endingCol = startCol;
+  } else {
+    startingCol = startCol - 1;
+    endingCol = startCol + 1;
+  }
+
+  let startingRow = 0;
+  let endingRow = 0;
+  if (startRow === 0) {
+    startingRow = startRow;
+    endingRow = startRow + 1;
+  } else if (startRow === 9) {
+    startingRow = startRow - 1;
+    endingRow = startRow;
+  } else {
+    startingRow = startRow - 1;
+    endingRow = startRow + 1;
+  }
+
+  let addCount = row => {
+    if (row === endingRow + 1) {
       return;
     }
-    for (let c = startCol; c < startCol + 3; c++) {
+    for (let c = startingCol; c <= endingCol; c++) {
       if (board[row][c]) {
-        board[row][c].count++;
+        board[row][c].count += 1;
       }
     }
     addCount(row + 1);
   };
 
-  addCount(startRow);
+  addCount(startingRow);
 };
 
 const makeBoard = (size, num) => {
@@ -32,7 +58,7 @@ const makeBoard = (size, num) => {
     let location = board[row][col];
 
     if (location.bomb === false) {
-      configureCounts(board, row - 1, col - 1);
+      configureCounts(board, row, col);
       board[row][col].bomb = true;
       bombs++;
     } else {
