@@ -1,5 +1,21 @@
 import { START_BOARD } from './types.js';
 
+const configureCounts = (board, startRow, startCol) => {
+  const addCount = row => {
+    if (row === startRow + 3) {
+      return;
+    }
+    for (let c = startCol; c < startCol + 3; c++) {
+      if (board[row][c]) {
+        board[row][c].count++;
+      }
+    }
+    addCount(row + 1);
+  };
+
+  addCount(startRow);
+};
+
 const makeBoard = (size, num) => {
   let board = [];
   for (var i = 0; i < size; i++) {
@@ -13,17 +29,16 @@ const makeBoard = (size, num) => {
   const makeBombs = () => {
     let row = Math.floor(Math.random() * Math.floor(num));
     let col = Math.floor(Math.random() * Math.floor(num));
-
     let location = board[row][col];
 
     if (location.bomb === false) {
+      configureCounts(board, row - 1, col - 1);
       board[row][col].bomb = true;
       bombs++;
     } else {
       makeBombs();
     }
   };
-
   while (bombs < num) {
     makeBombs();
   }
