@@ -1,3 +1,27 @@
+img {
+  width: 20px;
+}
+
+/* .board {
+  display: inline-block;
+} */
 table {
-  margin: 0 20%;
+  border: 1px solid black;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 600px;
+}
+
+td {
+  border: 1px solid black;
+  width: 30px;
+  text-align: center;
+  vertical-align: center;
+}
+
+.cover {
+  background-color: gray;
+  width: 100%;
+  border: 1px solid rgba(128, 128, 128, 0.678);
+  padding: 28px;
 }

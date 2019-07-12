@@ -12,6 +12,7 @@ const toggleMine = (board, payRow, payCol) => {
     });
   });
 };
+
 let toggled = {};
 
 const toggleSurroundings = (board, payRow, payCol) => {
@@ -60,17 +61,18 @@ const toggleSurroundings = (board, payRow, payCol) => {
   toggleMine(startingRow);
 };
 
-const startBoard = (state = [], { type, payload }) => {
+const test = (state = {}, { type, payload }) => {
   switch (type) {
-    case START_BOARD:
-      return payload;
     case HANDLE_CLICK:
       if (payload.count !== 0) {
         return toggleMine(state, payload.row, payload.col);
+      } else {
+        toggleSurroundings(state, payload.row, payload.col);
+        return toggled;
       }
     default:
       return state;
   }
 };
 
-export default startBoard;
+export default test;

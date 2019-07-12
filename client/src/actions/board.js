@@ -31,7 +31,7 @@ const configureCounts = (board, startRow, startCol) => {
     if (row === endingRow + 1) {
       return;
     }
-    for (let c = startingCol; c <= endingCol; c++) {
+    for (let c = startingCol; c < endingCol + 1; c++) {
       if (board[row][c]) {
         board[row][c].count += 1;
       }
@@ -47,7 +47,7 @@ const makeBoard = (size, num) => {
   for (var i = 0; i < size; i++) {
     board[i] = [];
     for (var j = 0; j < num; j++) {
-      board[i][j] = { bomb: false, count: 0 };
+      board[i][j] = { bomb: false, count: 0, toggled: false };
     }
   }
 
