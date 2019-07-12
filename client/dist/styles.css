@@ -2,9 +2,9 @@ img {
   width: 20px;
 }
 
-/* .board {
-  display: inline-block;
-} */
+.container {
+  color: black;
+}
 table {
   border: 1px solid black;
   border-collapse: collapse;

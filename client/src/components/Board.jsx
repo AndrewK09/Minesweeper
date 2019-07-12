@@ -3,17 +3,21 @@ import React, { Component } from 'react';
 export default class Board extends Component {
   renderMine(mine, row, col) {
     if (mine.toggled) {
-      return mine.bomb ? (
-        <img src='/client/dist/bomb.png' />
-      ) : (
-        <h6>{mine.count > 0 ? mine.count : ''}</h6>
-      );
+      if (mine.bomb) {
+        return <img src='/client/dist/bomb.png' />;
+      } else {
+        return <h6>{mine.count > 0 ? mine.count : ''}</h6>;
+      }
     } else {
       return (
         <button
           className='cover'
           onClick={() => {
-            this.props.updateToggles(row, col, mine.count);
+            if (mine.bomb) {
+              this.props.updateLoss();
+            } else {
+              this.props.updateToggles(row, col, mine.count);
+            }
           }}
         />
       );
