@@ -25,3 +25,16 @@ td {
   border: 1px solid rgba(128, 128, 128, 0.678);
   padding: 28px;
 }
+
+.board {
+  position: relative;
+  margin: 5% 5%;
+}
+
+/* .loss {
+  border: 1px solid black;
+  display: inline-block;
+  position: absolute;
+  top: 200px;
+  left: 200px;
+} */

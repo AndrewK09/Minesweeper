@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 export default class Board extends Component {
   renderMine(mine, row, col) {
+    const { loss, updateLoss, updateToggles } = this.props;
     if (mine.toggled) {
       if (mine.bomb) {
         return <img src='/client/dist/bomb.png' />;
@@ -13,10 +14,12 @@ export default class Board extends Component {
         <button
           className='cover'
           onClick={() => {
-            if (mine.bomb) {
-              this.props.updateLoss();
-            } else {
-              this.props.updateToggles(row, col, mine.count);
+            if (!loss) {
+              if (mine.bomb) {
+                updateLoss();
+              } else {
+                updateToggles(row, col, mine.count);
+              }
             }
           }}
         />
@@ -25,7 +28,7 @@ export default class Board extends Component {
   }
 
   render() {
-    const { board } = this.props;
+    const { board, loss, restartBoard } = this.props;
     return (
       <div className='board'>
         <table>
@@ -45,6 +48,20 @@ export default class Board extends Component {
             })}
           </tbody>
         </table>
+        {loss ? (
+          <div className='loss'>
+            You Lose
+            <button
+              onClick={() => {
+                restartBoard();
+              }}
+            >
+              Reset
+            </button>
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     );
   }
