@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 import startBoard from './board.js';
-import handleLoss from './handleLoss.js';
+import handleGame from './handleGame.js';
 
 const rootReducer = combineReducers({
   board: startBoard,
-  loss: handleLoss
+  game: handleGame
 });
 
 export default rootReducer;

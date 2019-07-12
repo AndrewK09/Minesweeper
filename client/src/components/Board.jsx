@@ -1,37 +1,44 @@
 import React, { Component } from 'react';
 
 export default class Board extends Component {
-  renderMine(mine, row, col) {
-    const { loss, updateLoss, updateToggles } = this.props;
-    if (mine.toggled) {
-      if (mine.bomb) {
-        return <img src='/client/dist/bomb.png' />;
-      } else {
-        return <h6>{mine.count > 0 ? mine.count : ''}</h6>;
-      }
-    } else {
-      return (
-        <button
-          className='cover'
-          onClick={() => {
-            if (!loss) {
-              if (mine.bomb) {
-                updateLoss();
-              } else {
-                updateToggles(row, col, mine.count);
-              }
+  renderButton(mine, row, col) {
+    const { game, updateLoss, updateMines, updateWin } = this.props;
+    return (
+      <img
+        src='/client/dist/images/square.png'
+        className='cover'
+        onClick={() => {
+          if (!game) {
+            if (mine.bomb) {
+              updateLoss();
+            } else {
+              updateMines(row, col, mine.count);
+              updateWin();
             }
-          }}
-        />
-      );
+          }
+        }}
+      />
+    );
+  }
+
+  renderMine(mine, row, col) {
+    // let view = <p>{mine.count > 0 ? mine.count : ''}</p>;
+
+    let view = (
+      <img src={`/client/dist/images/${mine.count}.png`} className='tile' />
+    );
+    if (mine.bomb) {
+      view = <img className='bomb' src='/client/dist/images/bomb.png' />;
     }
+    // return view;
+    return mine.toggled ? view : this.renderButton(mine, row, col);
   }
 
   render() {
-    const { board, loss, restartBoard } = this.props;
+    const { board, game, restartBoard } = this.props;
     return (
       <div className='board'>
-        <table>
+        <table cellPadding='0' cellSpacing='0'>
           <tbody>
             {board.map((row, rowInd) => {
               return (
@@ -48,9 +55,9 @@ export default class Board extends Component {
             })}
           </tbody>
         </table>
-        {loss ? (
+        {game ? (
           <div className='loss'>
-            You Lose
+            You {game}
             <button
               onClick={() => {
                 restartBoard();

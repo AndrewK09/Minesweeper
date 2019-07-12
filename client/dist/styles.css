@@ -1,7 +1,16 @@
-img {
-  width: 20px;
+.bomb {
+  width: 100%;
+  padding: 0px;
+  border-width: 0px;
+  margin: 0px;
 }
 
+.tile {
+  width: 100%;
+  padding: 0px;
+  border-width: 0px;
+  margin: 0px;
+}
 .container {
   color: black;
 }
@@ -10,20 +19,39 @@ table {
   border-collapse: collapse;
   table-layout: fixed;
   width: 600px;
+  height: 600px;
+  margin: 0;
+  padding: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0px;
 }
 
 td {
+  font-size: 0;
   border: 1px solid black;
-  width: 30px;
+  width: 60px;
+  height: 60px;
   text-align: center;
   vertical-align: center;
+  background-color: rgb(182, 180, 180);
+  padding: 0px;
+  border-width: 0px;
+  margin: 0px;
 }
 
 .cover {
   background-color: gray;
   width: 100%;
-  border: 1px solid rgba(128, 128, 128, 0.678);
-  padding: 28px;
+  height: 100%;
+  padding: 0px;
+  border-width: 0px;
+  margin: 0px;
+  /* border: 1px solid black; */
+}
+
+.cover:hover {
+  background-color: rgb(204, 204, 204);
 }
 
 .board {

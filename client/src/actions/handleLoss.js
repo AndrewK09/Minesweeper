@@ -1,4 +1,4 @@
-import { SHOW_BOMBS, SHOW_LOSS } from './types.js';
+import { SHOW_BOMBS, HANDLE_LOSS } from './types.js';
 
 const handleLoss = () => dispatch => {
   dispatch({
@@ -6,8 +6,8 @@ const handleLoss = () => dispatch => {
     payload: null
   });
   dispatch({
-    type: SHOW_LOSS,
-    payload: true
+    type: HANDLE_LOSS,
+    payload: 'loss'
   });
 };
 
