@@ -3,10 +3,12 @@ import Board from '../components/Board.jsx';
 import handleClick from '../actions/handleClick.js';
 import handleLoss from '../actions/handleLoss.js';
 import handleWin from '../actions/handleWin.js';
-import handleReset from '../actions/handleReset.js';
+import handleTimer from '../actions/handleTimer.js';
+
 const mapStateToProps = store => ({
   board: store.board,
-  game: store.game
+  game: store.game,
+  time: store.time
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -16,11 +18,11 @@ const mapDispatchToProps = dispatch => ({
   updateLoss: () => {
     dispatch(handleLoss());
   },
-  restartBoard: () => {
-    dispatch(handleReset());
-  },
   updateWin: () => {
     dispatch(handleWin());
+  },
+  updateTime: time => {
+    dispatch(handleTimer(time));
   }
 });
 

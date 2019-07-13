@@ -1,3 +1,96 @@
+body {
+  background: rgb(88, 88, 88);
+}
+.main-container {
+  border: 2px solid black;
+  display: inline-block;
+  width: 70%;
+  margin: 0 15%;
+  height: 100%;
+}
+
+.sub-container {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.sidebar {
+  float: right;
+  width: 34%;
+  margin: 1%;
+  background-color: rgba(182, 182, 182, 0.589);
+}
+
+.stopwatch {
+  display: inline-block;
+  border-bottom: 2px solid black;
+  padding: 1% 5%;
+  margin: 0 30%;
+  width: auto;
+}
+.stopwatch h1 {
+  margin: 0;
+}
+.game {
+  display: inline-block;
+  width: 100%;
+}
+.game p {
+  margin: 2px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.newGame,
+.restart {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.newGame {
+  margin-left: 30%;
+  float: left;
+}
+
+.restart {
+  margin-right: 30%;
+  float: right;
+}
+
+.board {
+  float: left;
+  position: relative;
+  padding: 1% 1%;
+  padding-right: 2%;
+  border-right: 2px solid black;
+  width: 60%;
+}
+
+.board table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 600px;
+  height: 600px;
+  margin: 0;
+  padding: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+
+.board td {
+  font-size: 0;
+  border: 1px solid black;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  vertical-align: center;
+  background-color: rgb(182, 180, 180);
+  padding: 0px;
+  border-width: 0px;
+  margin: 0px;
+}
 .bomb {
   width: 100%;
   padding: 0px;
@@ -11,35 +104,6 @@
   border-width: 0px;
   margin: 0px;
 }
-.container {
-  color: black;
-}
-table {
-  border: 1px solid black;
-  border-collapse: collapse;
-  table-layout: fixed;
-  width: 600px;
-  height: 600px;
-  margin: 0;
-  padding: 0;
-  border-spacing: 0;
-  border-collapse: collapse;
-  border-spacing: 0px;
-}
-
-td {
-  font-size: 0;
-  border: 1px solid black;
-  width: 60px;
-  height: 60px;
-  text-align: center;
-  vertical-align: center;
-  background-color: rgb(182, 180, 180);
-  padding: 0px;
-  border-width: 0px;
-  margin: 0px;
-}
-
 .cover {
   background-color: gray;
   width: 100%;
@@ -54,11 +118,6 @@ td {
   background-color: rgb(204, 204, 204);
 }
 
-.board {
-  position: relative;
-  margin: 5% 5%;
-}
-
 /* .loss {
   border: 1px solid black;
   display: inline-block;
@@ -66,3 +125,77 @@ td {
   top: 200px;
   left: 200px;
 } */
+
+/* =============== NAVBAR =====================*/
+.header {
+  list-style-type: none;
+  /* margin: 0 0 0 1%; */
+  margin: 0px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.header li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+.header li a:hover {
+  background-color: #111;
+}
+
+.home {
+  float: left;
+}
+
+.account {
+  float: right;
+  border-left: 2px solid black;
+}
+
+/* ===========LOGIN================= */
+.login {
+  display: block;
+  height: 600px;
+  width: 50%;
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+
+.form {
+  background-color: rgba(255, 255, 255, 0.856);
+  display: block;
+  position: relative;
+  height: 80%;
+  width: 80%;
+  margin: 0 auto;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.login button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 90%;
+}
+
+.form button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}

@@ -10,6 +10,17 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.png$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              mimetype: 'image/png'
+            }
+          }
+        ]
+      },
+      {
         test: /\.(js|jsx)$/,
         use: 'babel-loader',
         exclude: /node_modules/

@@ -4,7 +4,7 @@
   "description": "minesweeper game",
   "main": "index.js",
   "scripts": {
-    "start": "webpack -d --watch"
+    "start": "webpack -d --watch & nodemon server/index.js"
   },
   "repository": {
     "type": "git",
@@ -26,11 +26,22 @@
     "webpack-cli": "^3.3.5"
   },
   "dependencies": {
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "cookie-session": "^1.3.3",
     "express": "^4.17.1",
+    "mongodb": "^3.2.7",
+    "mongoose": "^5.6.4",
+    "nodemon": "^1.19.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^2.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0"
+    "redux-form": "^8.2.4",
+    "redux-thunk": "^2.3.0",
+    "url-loader": "^2.0.1"
   }
 }
