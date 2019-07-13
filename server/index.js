@@ -26,8 +26,8 @@ app.use('/', authRoutes);
 
 const { Rank } = require('./db.js');
 app.post('/ranks', checkLogin, (req, res) => {
-  let { sec } = req.body;
-  Rank.create({ time: sec })
+  let { sec, level } = req.body;
+  Rank.create({ time: sec, level: level })
     .then(() => {
       res.send('success');
     })
@@ -36,8 +36,8 @@ app.post('/ranks', checkLogin, (req, res) => {
     });
 });
 
-app.get('/ranks', (req, res) => {
-  Rank.find()
+app.get('/ranks/:level', (req, res) => {
+  Rank.find(req.params)
     .sort({ time: -1 })
     .limit(10)
     .then(result => {

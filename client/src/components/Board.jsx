@@ -43,11 +43,9 @@ export default class Board extends Component {
   }
 
   renderButton(mine, row, col) {
-    const { game, updateLoss, updateMines, updateWin, time } = this.props;
-    const auth = 'admin';
-
+    const { game, updateLoss, updateMines, updateWin, time, auth } = this.props;
     let src = require(`../../dist/images/square.png`);
-    if (auth === 'admin' && mine.bomb) {
+    if (auth === '5d290910ae24604695674c38' && mine.bomb) {
       src = require(`../../dist/images/showBomb.png`);
     }
     return (

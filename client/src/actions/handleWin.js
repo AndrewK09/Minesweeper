@@ -17,13 +17,13 @@ const hasWon = board => {
 };
 
 const handleWin = () => (dispatch, getState) => {
-  let { board, time } = getState();
+  let { board, time, level } = getState();
   dispatch({
     type: HANDLE_WIN,
     payload: hasWon(board)
   });
   if (hasWon(board)) {
-    Axios.post('/ranks', { sec: time.sec })
+    Axios.post('/ranks', { sec: time.sec, level: level })
       .then(() => {
         dispatch(getRank());
       })

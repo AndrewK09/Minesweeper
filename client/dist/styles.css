@@ -1,24 +1,38 @@
 body {
-  background: rgb(88, 88, 88);
+  background: rgb(31, 31, 31);
+  background-image: url('/images/background.jpeg');
+  background-size: cover;
+  box-sizing: border-box;
+  font-family: 'verdana', Times, serif;
 }
 .main-container {
-  border: 2px solid black;
+  border: 5px solid #05138c;
+  border-top: 5px solid #0773fb;
   display: inline-block;
   width: 70%;
   margin: 0 15%;
   height: 100%;
+  background-color: gray;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 1);
+  border-radius: 15px;
 }
 
 .sub-container {
   display: inline-block;
   width: 100%;
   height: 100%;
+  background-color: gray;
+  border-radius: 0 0 15px 15px;
 }
+
+/* ==============SIDEBAR============= */
 .sidebar {
   float: right;
   width: 34%;
   margin: 1%;
-  background-color: rgba(182, 182, 182, 0.589);
+  background-color: #dbdbdb;
+  box-shadow: 10px 10px 5px rgb(0, 0, 0, 0.3);
+  border-radius: 2px;
 }
 
 .stopwatch {
@@ -31,6 +45,7 @@ body {
 .stopwatch h1 {
   margin: 0;
 }
+
 .game {
   display: inline-block;
   width: 100%;
@@ -41,22 +56,50 @@ body {
   text-align: center;
 }
 
-.newGame,
-.restart {
-  margin-top: 5px;
-  margin-bottom: 5px;
+.game-buttons {
+  width: 100%;
+  display: inline-block;
 }
 
-.newGame {
-  margin-left: 30%;
-  float: left;
+.game-buttons button {
+  background-color: #979797;
+  color: white;
+  padding: 15px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  width: 50%;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.restart {
-  margin-right: 30%;
-  float: right;
+.game-buttons button:not(:last-child) {
+  border-right: none;
 }
 
+.game-buttons button:hover {
+  background-color: #737373;
+}
+
+.highscore {
+  display: inline-block;
+  padding: 15px;
+  border-top: 2px solid black;
+  width: 91%;
+  margin-top: 20px;
+}
+
+.highscore-table td {
+  text-align: center;
+}
+
+.time,
+.name,
+.rank {
+  width: 80px;
+}
+/* ==============BOARD============= */
 .board {
   float: left;
   position: relative;
@@ -118,22 +161,15 @@ body {
   background-color: rgb(204, 204, 204);
 }
 
-/* .loss {
-  border: 1px solid black;
-  display: inline-block;
-  position: absolute;
-  top: 200px;
-  left: 200px;
-} */
-
 /* =============== NAVBAR =====================*/
 .header {
   list-style-type: none;
-  /* margin: 0 0 0 1%; */
   margin: 0px;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #0457e7;
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: 2px solid #1e71ff;
 }
 
 .header li a {
@@ -143,10 +179,11 @@ body {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 30px;
+  border-radius: 15px;
 }
 
 .header li a:hover {
-  background-color: #111;
+  background-color: #3992ff;
 }
 
 .home {
@@ -199,3 +236,68 @@ body {
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
+
+/* ============SELECTION================== */
+.selection {
+  display: inline-block;
+  width: 100%;
+}
+
+h1,
+h2 {
+  margin: 0px;
+  color: #414141;
+}
+
+.selection-wrapper {
+  display: block;
+  border: 1px solid #737373;
+  width: 400px;
+  margin: 20px auto;
+  background-color: #f2f2f2;
+}
+
+.difficulty-buttons {
+  display: block;
+  width: 100%;
+}
+
+.description {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding: 5px;
+}
+
+.start {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.difficulty-buttons button,
+.start-button {
+  background-color: #a6a6a6;
+  border: 1px solid #737373;
+  color: #000000;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+.start-button {
+  width: 100%;
+}
+.difficulty-buttons button:not(:last-child) {
+  border-right: none;
+}
+
+.difficulty-buttons button:hover,
+.start-button:hover {
+  background-color: #bfbfbf;
+}
+
+/* ==============SIDEBAR==================== */

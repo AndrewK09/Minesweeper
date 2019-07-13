@@ -11,7 +11,8 @@ const mapStateToProps = store => ({
   game: store.game,
   time: store.time,
   size: store.size,
-  level: store.level
+  level: store.level,
+  auth: store.auth
 });
 
 const mapDispatchToProps = dispatch => ({

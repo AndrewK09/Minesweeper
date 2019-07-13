@@ -20,10 +20,9 @@ export default class Sidebar extends Component {
     const { restartBoard } = this.props;
 
     {
-      let text = this.handleGame();
       return (
         <div className='game'>
-          <p>{text}</p>
+          <p>{this.handleGame()}</p>
           <div className='game-buttons'>
             <Link to='/'>
               <button className='newGame'>New Game</button>
@@ -44,13 +43,9 @@ export default class Sidebar extends Component {
   render() {
     return (
       <div className='sidebar'>
-        {/* timer */}
         <StopwatchContainer />
         {this.renderGame()}
-        {/* highscore */}
         <Ranks ranks={this.props.ranks} />
-
-        {/* personalscore */}
       </div>
     );
   }

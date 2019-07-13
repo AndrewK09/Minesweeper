@@ -16,7 +16,8 @@ const userSchema = new mongoose.Schema({
 });
 
 const rankSchema = new mongoose.Schema({
-  time: Number
+  time: Number,
+  level: String
 });
 
 const User = mongoose.model('user', userSchema);
