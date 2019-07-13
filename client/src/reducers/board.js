@@ -1,12 +1,16 @@
 import { START_BOARD, HANDLE_CLICK, SHOW_BOMBS } from '../actions/types.js';
 
-const updateMine = (board, payRow, payCol) => {
+const updateMine = (board, payRow, payCol, size) => {
+  const { h, w } = size;
+  const height = h;
+  const width = w;
+
   let startingCol = 0;
   let endingCol = 0;
   if (payCol === 0) {
     startingCol = payCol;
     endingCol = payCol + 1;
-  } else if (payCol === 9) {
+  } else if (payCol === width - 1) {
     startingCol = payCol - 1;
     endingCol = payCol;
   } else {
@@ -19,7 +23,7 @@ const updateMine = (board, payRow, payCol) => {
   if (payRow === 0) {
     startingRow = payRow;
     endingRow = payRow + 1;
-  } else if (payRow === 9) {
+  } else if (payRow === height - 1) {
     startingRow = payRow - 1;
     endingRow = payRow;
   } else {
@@ -35,7 +39,7 @@ const updateMine = (board, payRow, payCol) => {
     } else {
       for (let c = startingCol; c < endingCol + 1; c++) {
         if (!newBoard[row][c].toggled) {
-          newBoard = updateMine(newBoard, row, c);
+          newBoard = updateMine(newBoard, row, c, size);
         }
       }
       toggleMine(row + 1);
@@ -67,7 +71,7 @@ const startBoard = (state = [], { type, payload }) => {
     case START_BOARD:
       return payload;
     case HANDLE_CLICK:
-      return updateMine(state, payload.row, payload.col);
+      return updateMine(state, payload.row, payload.col, payload.size);
     case SHOW_BOMBS:
       return handleLoss(state);
     default:

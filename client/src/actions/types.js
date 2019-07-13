@@ -9,3 +9,5 @@ export const HANDLE_STOP = 'HANDLESTOP';
 export const HANDLE_LOGIN = 'HANDLE_LOGIN';
 export const ADD_RANK = 'ADD_RANK';
 export const GET_RANKS = 'GET_RANKS';
+export const HANDLE_BOARD = 'HANDLE_BOARD';
+export const HANDLE_LEVEL = 'HANDLE_LEVEL';

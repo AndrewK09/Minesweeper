@@ -9,10 +9,10 @@ const handleReset = () => (dispatch, getState) => {
   //reset timer
   dispatch({
     type: HANDLE_TIMER,
-    payload: { min: 0, sec: 0, count: false }
+    payload: { sec: 0, count: false }
   });
 
-  dispatch(startBoard(10, 10));
+  dispatch(startBoard());
 };
 
 export default handleReset;

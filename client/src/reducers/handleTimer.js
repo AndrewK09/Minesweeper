@@ -7,13 +7,6 @@ const handleTimer = (
 ) => {
   switch (type) {
     case HANDLE_TIMER:
-      // let newTime = Object.assign({}, state);
-      // newTime.min = payload.min;
-      // newTime.sec = payload.sec;
-      // if (payload.count) {
-      //   newTime.count = true;
-      // }
-      // return newTime;
       return payload;
     case HANDLE_STOP:
       let newCount = Object.assign({}, state);

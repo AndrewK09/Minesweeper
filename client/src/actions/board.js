@@ -1,12 +1,16 @@
 import { START_BOARD } from './types.js';
 
-const configureCounts = (board, startRow, startCol) => {
+const configureCounts = (board, startRow, startCol, h, w) => {
+  //pass in board size, height and width
+  const height = h;
+  const width = w;
+
   let startingCol = 0;
   let endingCol = 0;
   if (startCol === 0) {
     startingCol = startCol;
     endingCol = startCol + 1;
-  } else if (startCol === 9) {
+  } else if (startCol === width - 1) {
     startingCol = startCol - 1;
     endingCol = startCol;
   } else {
@@ -19,7 +23,7 @@ const configureCounts = (board, startRow, startCol) => {
   if (startRow === 0) {
     startingRow = startRow;
     endingRow = startRow + 1;
-  } else if (startRow === 9) {
+  } else if (startRow === height - 1) {
     startingRow = startRow - 1;
     endingRow = startRow;
   } else {
@@ -42,40 +46,48 @@ const configureCounts = (board, startRow, startCol) => {
   addCount(startingRow);
 };
 
-const makeBoard = (size, num) => {
+const makeBoard = (h, w, b) => {
   let board = [];
-  for (var i = 0; i < size; i++) {
+  for (var i = 0; i < h; i++) {
     board[i] = [];
-    for (var j = 0; j < num; j++) {
+    for (var j = 0; j < w; j++) {
       board[i][j] = { bomb: false, count: 0, toggled: false };
     }
   }
 
   var bombs = 0;
   const makeBombs = () => {
-    let row = Math.floor(Math.random() * Math.floor(num));
-    let col = Math.floor(Math.random() * Math.floor(num));
+    let row = Math.floor(Math.random() * Math.floor(h));
+    let col = Math.floor(Math.random() * Math.floor(w));
     let location = board[row][col];
 
     if (location.bomb === false) {
-      configureCounts(board, row, col);
+      configureCounts(board, row, col, h, w);
       board[row][col].bomb = true;
       bombs++;
     } else {
       makeBombs();
     }
   };
-  while (bombs < num) {
+  while (bombs < b) {
     makeBombs();
   }
   return board;
 };
 
-const startBoard = (size, num) => {
-  return {
+const startBoard = () => (dispatch, getState) => {
+  const { h, w, b } = getState().size;
+  dispatch({
     type: START_BOARD,
-    payload: makeBoard(size, num)
-  };
+    payload: makeBoard(h, w, b)
+  });
 };
+
+// const startBoard = (h, w, b) => {
+//   return {
+//     type: START_BOARD,
+//     payload: makeBoard(h, w, b)
+//   };
+// };
 
 export default startBoard;

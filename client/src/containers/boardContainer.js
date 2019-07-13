@@ -4,11 +4,14 @@ import handleClick from '../actions/handleClick.js';
 import handleLoss from '../actions/handleLoss.js';
 import handleWin from '../actions/handleWin.js';
 import handleTimer from '../actions/handleTimer.js';
+import handleBoard from '../actions/handleBoard.js';
 
 const mapStateToProps = store => ({
   board: store.board,
   game: store.game,
-  time: store.time
+  time: store.time,
+  size: store.size,
+  level: store.level
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -23,6 +26,9 @@ const mapDispatchToProps = dispatch => ({
   },
   updateTime: time => {
     dispatch(handleTimer(time));
+  },
+  handleBoard: (height, width, bombs) => {
+    dispatch(handleBoard(height, width, bombs));
   }
 });
 

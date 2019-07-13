@@ -6,10 +6,14 @@ import startBoard from '../actions/board.js';
 
 import HeaderContainer from '../containers/headerContainer.js';
 import BoardContainer from '../containers/boardContainer.js';
+import SelectionContainer from '../containers/selectionContainer.js';
 import LoginContainer from '../containers/loginContainer.js';
+import handleBoard from '../actions/handleBoard.js';
 export default class App extends Component {
   componentDidMount() {
-    store.dispatch(startBoard(10, 10));
+    //dispatch make board which adds size to state
+    //call start board
+    store.dispatch(handleBoard(10, 10, 10));
   }
 
   render() {
@@ -17,8 +21,9 @@ export default class App extends Component {
       <div className='main-container'>
         <Router>
           <HeaderContainer />
-          <Route exact path='/' component={BoardContainer} />
+          <Route exact path='/' component={SelectionContainer} />
           <Route path='/login' component={LoginContainer} />
+          <Route path='/board' component={BoardContainer} />
         </Router>
       </div>
     );

@@ -5,12 +5,16 @@ import handleGame from './handleGame.js';
 import handleTimer from './handleTimer.js';
 import auth from './auth.js';
 import ranks from './ranks';
+import handleBoard from './handleBoard.js';
+import handleLevel from './level.js';
 const rootReducer = combineReducers({
   board: startBoard,
   game: handleGame,
   time: handleTimer,
   auth: auth,
-  ranks: ranks
+  ranks: ranks,
+  size: handleBoard,
+  level: handleLevel
 });
 
 export default rootReducer;

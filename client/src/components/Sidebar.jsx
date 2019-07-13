@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import StopwatchContainer from '../containers/stopwatchContainer.js';
 import Ranks from './Ranks.jsx';
 export default class Sidebar extends Component {
@@ -23,7 +25,9 @@ export default class Sidebar extends Component {
         <div className='game'>
           <p>{text}</p>
           <div className='game-buttons'>
-            <button className='newGame'>New Game</button>
+            <Link to='/'>
+              <button className='newGame'>New Game</button>
+            </Link>
             <button
               className='restart'
               onClick={() => {
