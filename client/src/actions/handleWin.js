@@ -25,7 +25,7 @@ const handleWin = () => (dispatch, getState) => {
   if (hasWon(board)) {
     Axios.post('/ranks', { sec: time.sec })
       .then(() => {
-        dispatch(getRank);
+        dispatch(getRank());
       })
       .catch(err => {
         console.log(err);

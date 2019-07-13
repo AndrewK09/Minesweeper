@@ -27,7 +27,6 @@ app.use('/', authRoutes);
 const { Rank } = require('./db.js');
 app.post('/ranks', checkLogin, (req, res) => {
   let { sec } = req.body;
-  console.log(typeof sec);
   Rank.create({ time: sec })
     .then(() => {
       res.send('success');

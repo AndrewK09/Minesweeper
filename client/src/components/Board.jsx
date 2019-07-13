@@ -16,7 +16,6 @@ export default class Board extends Component {
       }
       let newTime = Object.assign({}, time);
       newTime.sec++;
-      console.log(newTime);
       updateTime(newTime);
     }, 1000);
 

@@ -9,10 +9,7 @@ const handlePadding = num => {
 const handleTime = num => {
   let min = handlePadding(Math.floor(num / 60));
   let sec = handlePadding(num % 60);
-  let time = `${sec} sec.`;
-  // if (min > 0) {
-  time = `${min} : ${sec}s`;
-  // }
+  let time = `${min} : ${sec}s`;
   return time;
 };
 const Ranks = ({ ranks }) => {
