@@ -59,7 +59,7 @@ export default class Board extends Component {
   }
 
   flag(e) {
-    e.target.src = require(`../../dist/images/showBomb.png`);
+    e.target.src = require(`../../dist/images/flag.png`);
   }
 
   handleClick(mine, row, col) {
