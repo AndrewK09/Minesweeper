@@ -58,21 +58,16 @@ export default class Board extends Component {
     }
   }
 
-  flag(e) {
-    console.log(e.target);
-    if (e.target.className.includes('flagged')) {
-      e.target.src = require(`../../dist/images/square.png`);
-      e.target.className = 'cover';
-    } else {
-      e.target.src = require(`../../dist/images/flag.png`);
-      e.target.className += ' flagged';
-    }
+  flag(row, col) {
+    this.props.toggleFlag(row, col);
   }
 
   handleClick(mine, row, col) {
     const { auth, flag } = this.props;
     let context = this;
-    let src = require(`../../dist/images/square.png`);
+    let src = mine.flagged
+      ? require(`../../dist/images/flag.png`)
+      : require(`../../dist/images/square.png`);
     if (auth.username === 'Andrew' && mine.bomb) {
       src = require(`../../dist/images/showBomb.png`);
     }
@@ -81,7 +76,9 @@ export default class Board extends Component {
         src={src}
         className='cover'
         onClick={
-          flag ? this.flag : this.checkMine.bind(context, mine, row, col)
+          flag
+            ? this.flag.bind(context, row, col)
+            : this.checkMine.bind(context, mine, row, col)
         }
       />
     );

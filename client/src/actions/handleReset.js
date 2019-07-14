@@ -1,9 +1,10 @@
 import { HANDLE_RESET, HANDLE_TIMER } from './types.js';
 import startBoard from './board.js';
 import toggleFlag from './flag.js';
+import resetBoard from './resetBoard.js';
 
 const handleReset = () => (dispatch, getState) => {
-  const store = getState();
+  dispatch(resetBoard());
   dispatch({
     type: HANDLE_RESET,
     payload: true

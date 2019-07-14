@@ -12,3 +12,5 @@ export const GET_RANKS = 'GET_RANKS';
 export const HANDLE_BOARD = 'HANDLE_BOARD';
 export const HANDLE_LEVEL = 'HANDLE_LEVEL';
 export const TOGGLE_FLAG = 'TOGGLE_FLAG';
+export const RESET_BOARD = 'RESET_BOARD';
+export const HANDLE_FLAG = 'HANDLE_FLAG';

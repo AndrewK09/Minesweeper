@@ -5,6 +5,7 @@ import handleLoss from '../actions/handleLoss.js';
 import handleWin from '../actions/handleWin.js';
 import handleTimer from '../actions/handleTimer.js';
 import handleBoard from '../actions/handleBoard.js';
+import handleFlag from '../actions/handleFlag.js';
 
 const mapStateToProps = store => ({
   board: store.board,
@@ -31,6 +32,9 @@ const mapDispatchToProps = dispatch => ({
   },
   handleBoard: (height, width, bombs) => {
     dispatch(handleBoard(height, width, bombs));
+  },
+  toggleFlag: (row, col) => {
+    dispatch(handleFlag(row, col));
   }
 });
 

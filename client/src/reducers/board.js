@@ -1,4 +1,9 @@
-import { START_BOARD, HANDLE_CLICK, SHOW_BOMBS } from '../actions/types.js';
+import {
+  START_BOARD,
+  HANDLE_CLICK,
+  SHOW_BOMBS,
+  HANDLE_FLAG
+} from '../actions/types.js';
 
 const updateMine = (board, payRow, payCol, size) => {
   const { h, w } = size;
@@ -74,6 +79,19 @@ const startBoard = (state = [], { type, payload }) => {
       return updateMine(state, payload.row, payload.col, payload.size);
     case SHOW_BOMBS:
       return handleLoss(state);
+    case HANDLE_FLAG:
+      let newBoard = state.map((row, rowInd) => {
+        if (rowInd === payload.row) {
+          return row.map((col, colInd) => {
+            if (colInd === payload.col) {
+              col.flagged = payload.flagged;
+            }
+            return col;
+          });
+        }
+        return row;
+      });
+      return newBoard;
     default:
       return state;
   }

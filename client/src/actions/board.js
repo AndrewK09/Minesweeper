@@ -51,7 +51,7 @@ const makeBoard = (h, w, b) => {
   for (var i = 0; i < h; i++) {
     board[i] = [];
     for (var j = 0; j < w; j++) {
-      board[i][j] = { bomb: false, count: 0, toggled: false };
+      board[i][j] = { bomb: false, count: 0, toggled: false, flagged: false };
     }
   }
 
