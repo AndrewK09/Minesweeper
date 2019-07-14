@@ -4,10 +4,12 @@ import handleReset from '../actions/handleReset.js';
 import stopTimer from '../actions/stopTimer.js';
 import handleLogin from '../actions/auth/login.js';
 import getRanks from '../actions/getRank.js';
+import toggleFlag from '../actions/flag.js';
 const mapStateToProps = store => ({
   game: store.game,
   auth: store.auth,
-  ranks: store.ranks
+  ranks: store.ranks,
+  flag: store.flag
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -22,6 +24,9 @@ const mapDispatchToProps = dispatch => ({
   },
   updateRanks: () => {
     dispatch(getRanks());
+  },
+  toggleFlag: () => {
+    dispatch(toggleFlag());
   }
 });
 

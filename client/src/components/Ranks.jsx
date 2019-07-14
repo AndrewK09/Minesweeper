@@ -27,9 +27,9 @@ const Ranks = ({ ranks }) => {
         <tbody>
           {ranks.map((rank, i) => {
             return (
-              <tr key={rank.time}>
+              <tr key={i}>
                 <td>{i + 1}. </td>
-                <td className='name'>Admin</td>
+                <td className='name'>{rank.username}</td>
                 <td className='time'>{handleTime(rank.time)}</td>
               </tr>
             );

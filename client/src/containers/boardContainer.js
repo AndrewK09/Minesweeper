@@ -12,7 +12,8 @@ const mapStateToProps = store => ({
   time: store.time,
   size: store.size,
   level: store.level,
-  auth: store.auth
+  auth: store.auth,
+  flag: store.flag
 });
 
 const mapDispatchToProps = dispatch => ({

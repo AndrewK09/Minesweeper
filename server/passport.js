@@ -19,13 +19,16 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: '/auth/google/callback',
+      callbackURL: '/google/callback',
       proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
       return User.findOne({ googleId: profile.id }).then(existingUser => {
         if (!existingUser) {
-          return User.create({ googleId: profile.id }).then(user => {
+          return User.create({
+            googleId: profile.id,
+            username: profile.name.givenName
+          }).then(user => {
             done(null, user);
           });
         }

@@ -7,6 +7,7 @@ import auth from './auth.js';
 import ranks from './ranks';
 import handleBoard from './handleBoard.js';
 import handleLevel from './level.js';
+import toggleFlag from './flag.js';
 const rootReducer = combineReducers({
   board: startBoard,
   game: handleGame,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   auth: auth,
   ranks: ranks,
   size: handleBoard,
-  level: handleLevel
+  level: handleLevel,
+  flag: toggleFlag
 });
 
 export default rootReducer;

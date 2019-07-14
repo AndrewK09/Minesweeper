@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SidebarContainer from '../containers/sidebarContainer';
+
 export default class Board extends Component {
   componentDidMount() {
     //update board depending on level
@@ -42,30 +43,39 @@ export default class Board extends Component {
     startTimer;
   }
 
-  renderButton(mine, row, col) {
+  checkMine(mine, row, col) {
     const { game, updateLoss, updateMines, updateWin, time, auth } = this.props;
+    if (time.count === false) {
+      this.updateTimer();
+    }
+    if (!game) {
+      if (mine.bomb) {
+        updateLoss();
+      } else {
+        updateMines(row, col, mine.count);
+        updateWin();
+      }
+    }
+  }
+
+  flag(e) {
+    e.target.src = require(`../../dist/images/showBomb.png`);
+  }
+
+  handleClick(mine, row, col) {
+    const { auth, flag } = this.props;
+    let context = this;
     let src = require(`../../dist/images/square.png`);
-    if (auth === '5d290910ae24604695674c38' && mine.bomb) {
+    if (auth.username === 'Andrew' && mine.bomb) {
       src = require(`../../dist/images/showBomb.png`);
     }
     return (
       <img
         src={src}
         className='cover'
-        onClick={() => {
-          if (time.sec === 0) {
-            this.updateTimer();
-          }
-          if (!game) {
-            if (mine.bomb) {
-              updateLoss();
-            } else {
-              updateMines(row, col, mine.count);
-              updateWin();
-            }
-          } else {
-          }
-        }}
+        onClick={
+          flag ? this.flag : this.checkMine.bind(context, mine, row, col)
+        }
       />
     );
   }
@@ -82,7 +92,7 @@ export default class Board extends Component {
         <img className='bomb' src={require(`../../dist/images/bomb.png`)} />
       );
     }
-    return mine.toggled ? view : this.renderButton(mine, row, col);
+    return mine.toggled ? view : this.handleClick(mine, row, col);
   }
 
   render() {

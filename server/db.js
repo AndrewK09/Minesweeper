@@ -12,12 +12,14 @@ db.once('open', () => {
 });
 
 const userSchema = new mongoose.Schema({
-  googleId: String
+  googleId: String,
+  username: String
 });
 
 const rankSchema = new mongoose.Schema({
   time: Number,
-  level: String
+  level: String,
+  username: String
 });
 
 const User = mongoose.model('user', userSchema);

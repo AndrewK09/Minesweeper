@@ -11,3 +11,4 @@ export const ADD_RANK = 'ADD_RANK';
 export const GET_RANKS = 'GET_RANKS';
 export const HANDLE_BOARD = 'HANDLE_BOARD';
 export const HANDLE_LEVEL = 'HANDLE_LEVEL';
+export const TOGGLE_FLAG = 'TOGGLE_FLAG';

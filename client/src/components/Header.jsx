@@ -4,9 +4,9 @@ export default class Header extends Component {
   //get auth from props
   renderLogin() {
     const { auth } = this.props;
-    return auth ? (
+    return auth.id ? (
       <li className='account'>
-        <a href='/api/logout'>Log Out</a>
+        <a href='/google/logout'>Log Out</a>
       </li>
     ) : (
       <li className='account'>
@@ -17,7 +17,7 @@ export default class Header extends Component {
 
   renderSignup() {
     const { auth } = this.props;
-    if (!auth) {
+    if (!auth.id) {
       return (
         <li className='account'>
           <Link to='/signup'>Sign Up</Link>

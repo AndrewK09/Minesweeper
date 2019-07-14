@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import StopwatchContainer from '../containers/stopwatchContainer.js';
 import Ranks from './Ranks.jsx';
+
 export default class Sidebar extends Component {
   componentDidMount() {
     this.props.handleLogin();
@@ -10,11 +11,23 @@ export default class Sidebar extends Component {
   }
 
   handleGame() {
-    const { game } = this.props;
+    const { game, toggleFlag, flag } = this.props;
+    let img = 'default';
     if (game) {
-      return `You ${game}`;
+      img = game;
     }
-    return 'Timer';
+    if (flag) {
+      img = 'flag';
+    }
+    return (
+      <div className='flag-container'>
+        <img
+          className='flag'
+          src={require(`../../dist/images/${img}.png`)}
+          onClick={toggleFlag}
+        />
+      </div>
+    );
   }
   renderGame() {
     const { restartBoard } = this.props;
@@ -22,13 +35,13 @@ export default class Sidebar extends Component {
     {
       return (
         <div className='game'>
-          <p>{this.handleGame()}</p>
+          {this.handleGame()}
           <div className='game-buttons'>
             <Link to='/'>
-              <button className='newGame'>New Game</button>
+              <button className='options'>New Game</button>
             </Link>
             <button
-              className='restart'
+              className='options'
               onClick={() => {
                 restartBoard();
               }}
@@ -46,6 +59,11 @@ export default class Sidebar extends Component {
         <StopwatchContainer />
         {this.renderGame()}
         <Ranks ranks={this.props.ranks} />
+        {this.props.auth ? (
+          ''
+        ) : (
+          <p className='auth'>Must be logged in to save score</p>
+        )}
       </div>
     );
   }
