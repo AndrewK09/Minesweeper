@@ -38,7 +38,7 @@ app.post('/ranks', checkLogin, (req, res) => {
 
 app.get('/ranks/:level', (req, res) => {
   Rank.find(req.params)
-    .sort({ time: -1 })
+    .sort({ time: 1 })
     .limit(10)
     .then(result => {
       res.send(result);

@@ -1,6 +1,6 @@
 import { HANDLE_BOARD } from '../actions/types.js';
 
-const handleBoard = (state = { h: 10, w: 10, b: 10 }, { type, payload }) => {
+const handleBoard = (state = { h: 8, w: 8, b: 10 }, { type, payload }) => {
   switch (type) {
     case HANDLE_BOARD:
       let size = Object.assign({}, state);

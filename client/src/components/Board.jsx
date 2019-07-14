@@ -23,11 +23,13 @@ export default class Board extends Component {
   }
 
   updateTimer() {
+    //activate timer
     const { updateTime } = this.props;
     updateTime({
       sec: 0,
       count: true
     });
+    //increment timer
     let startTimer = setInterval(() => {
       const { updateTime, time, game, stopTime } = this.props;
       //if game ended or reset was clicked, stop timer
@@ -43,11 +45,13 @@ export default class Board extends Component {
     startTimer;
   }
 
+  //if timer didn't start, start it
   checkMine(mine, row, col) {
-    const { game, updateLoss, updateMines, updateWin, time, auth } = this.props;
+    const { game, updateLoss, updateMines, updateWin, time } = this.props;
     if (time.count === false) {
       this.updateTimer();
     }
+    //if game did not end, handle win/loss and recursion on zeros
     if (!game) {
       if (mine.bomb) {
         updateLoss();
@@ -58,16 +62,21 @@ export default class Board extends Component {
     }
   }
 
+  //if flag mode activated, flag that mine
   flag(row, col) {
     this.props.toggleFlag(row, col);
   }
 
+  //if flag mode activated, toggle mine to be flag, otherwise handle square scenarios
   handleClick(mine, row, col) {
     const { auth, flag } = this.props;
     let context = this;
+    //if mine is flagged, change image to be a square
     let src = mine.flagged
       ? require(`../../dist/images/flag.png`)
       : require(`../../dist/images/square.png`);
+
+    //if admin, show all bombs
     if (auth.username === 'Andrew' && mine.bomb) {
       src = require(`../../dist/images/showBomb.png`);
     }
@@ -83,7 +92,8 @@ export default class Board extends Component {
       />
     );
   }
-
+  //show image of number or bomb if mine is toggled
+  //if mine isn't toggled, return image of square or flag with click functionality
   renderMine(mine, row, col) {
     let view = (
       <img

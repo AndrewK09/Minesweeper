@@ -9,13 +9,9 @@ import BoardContainer from '../containers/boardContainer.js';
 import SelectionContainer from '../containers/selectionContainer.js';
 import LoginContainer from '../containers/loginContainer.js';
 import SignupContainer from '../containers/signupContainer.js';
-import handleBoard from '../actions/handleBoard.js';
 import handleLogin from '../actions/auth/login.js';
 export default class App extends Component {
   componentDidMount() {
-    //dispatch make board which adds size to state
-    //call start board
-    store.dispatch(handleBoard(10, 10, 10));
     store.dispatch(handleLogin());
   }
 

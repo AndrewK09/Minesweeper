@@ -10,6 +10,7 @@ export default class Sidebar extends Component {
     this.props.updateRanks();
   }
 
+  //change imgage of sun depending on a win/loss/flag mode
   handleGame() {
     const { game, toggleFlag, flag } = this.props;
     let img = 'default';
@@ -29,6 +30,8 @@ export default class Sidebar extends Component {
       </div>
     );
   }
+
+  //display restart/new game button with functionality
   renderGame() {
     const { restartBoard } = this.props;
 
@@ -59,7 +62,7 @@ export default class Sidebar extends Component {
         <StopwatchContainer />
         {this.renderGame()}
         <Ranks ranks={this.props.ranks} />
-        {this.props.auth ? (
+        {this.props.auth.id ? (
           ''
         ) : (
           <p className='auth'>Must be logged in to save score</p>
