@@ -1,5 +1,7 @@
-import { HANDLE_RESET, HANDLE_TIMER, HANDLE_STOP } from './types.js';
+import { HANDLE_RESET, HANDLE_TIMER } from './types.js';
 import startBoard from './board.js';
+import toggleFlag from './flag.js';
+
 const handleReset = () => (dispatch, getState) => {
   const store = getState();
   dispatch({
@@ -13,6 +15,7 @@ const handleReset = () => (dispatch, getState) => {
   });
 
   dispatch(startBoard());
+  dispatch(toggleFlag(true));
 };
 
 export default handleReset;

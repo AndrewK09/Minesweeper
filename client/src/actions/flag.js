@@ -1,8 +1,8 @@
 import { TOGGLE_FLAG } from './types.js';
 
-const toggleFlag = () => ({
+const toggleFlag = reset => ({
   type: TOGGLE_FLAG,
-  payload: true
+  payload: reset
 });
 
 export default toggleFlag;

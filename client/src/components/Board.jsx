@@ -59,7 +59,14 @@ export default class Board extends Component {
   }
 
   flag(e) {
-    e.target.src = require(`../../dist/images/flag.png`);
+    console.log(e.target);
+    if (e.target.className.includes('flagged')) {
+      e.target.src = require(`../../dist/images/square.png`);
+      e.target.className = 'cover';
+    } else {
+      e.target.src = require(`../../dist/images/flag.png`);
+      e.target.className += ' flagged';
+    }
   }
 
   handleClick(mine, row, col) {
