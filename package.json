@@ -23,7 +23,7 @@
     "babel-loader": "^8.0.6",
     "redux-devtools": "^3.5.0",
     "webpack": "^4.35.3",
-    "webpack-cli": "^3.3.5"
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "axios": "^0.19.0",
